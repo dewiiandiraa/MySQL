@@ -1,0 +1,24 @@
+[04] DROP TABLE
+// Pernyataan ini DROP TABLE digunakan untuk menghapus secara permanen tabel yang sudah ada dalam basis data //
+
+- DROP TABLE table_name;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+------------------------
+| MySQL TRUNCATE TABLE |
+------------------------
+// Untuk mencegah terjadinya kesalahan (jika tabel tidak ada), ada baiknya menambahkan IF EXISTS klausa //
+
+- DROP TABLE IF EXISTS table_name;
+
+// Catatan: Di sebagian besar basis data, Anda tidak dapat menghapus tabel yang dirujuk oleh batasan kunci asing di tabel lain. Untuk mengatasi hal ini, Anda harus menghapus batasan kunci asing atau menghapus tabel yang bergantung. //
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+------------------------
+| MySQL TRUNCATE TABLE |
+------------------------
+// Pernyataan ini TRUNCATE TABLE digunakan untuk menghapus semua data dalam sebuah tabel, tetapi tetap mempertahankan struktur tabel, kolom, dan Batasan//
+
+- TRUNCATE TABLE table_name;

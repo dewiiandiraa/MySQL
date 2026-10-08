@@ -1,0 +1,111 @@
+[05] ALTER TABLE
+// Pernyataan ini ALTER TABLE digunakan untuk menambah, menghapus, atau memodifikasi kolom dalam tabel yang sudah ada. Pernyataan ini ALTER TABLE juga digunakan untuk menambah dan menghapus berbagai batasan pada tabel yang sudah ada. //
+
+// Operasi umum ALTER TABLEmeliputi:
+Add column - Menambahkan kolom baru ke tabel
+Drop column - Menghapus kolom dalam sebuah tabel
+Rename column - Mengganti nama kolom
+Modify column - Mengubah tipe data, ukuran, atau batasan kolom.
+Add constraint - Menambahkan batasan baru
+Rename table - Mengganti nama tabel //
+
+----------------------------
+| ALTER TABLE - ADD Column |
+----------------------------
+// Untuk menambahkan kolom pada table //
+
+- ALTER TABLE table_name
+  ADD column_name datatype;
+
+Contoh :
+// SQL berikut menambahkan kolom "Email" ke tabel "Customers" //
+
+- ALTER TABLE Customers
+  ADD Email varchar(255);
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-----------------------------
+| ALTER TABLE - DROP Column |
+-----------------------------
+// Untuk menghapus kolom dalam table //
+
+- ALTER TABLE table_name
+  DROP COLUMN column_name;
+
+Contoh :
+// SQL berikut menghapus kolom "Email" dari tabel "Customers" //
+
+- ALTER TABLE Customers
+  DROP COLUMN Email;
+
+// Selanjutnya, kita ingin menghapus kolom bernama "DateOfBirth" di tabel "Persons" //
+
+- ALTER TABLE Persons
+  DROP COLUMN DateOfBirth;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-------------------------------
+| ALTER TABLE - RENAME Column |
+-------------------------------
+// Untuk mengganti nama kolom dalam table //
+	
+- ALTER TABLE table_name
+  RENAME COLUMN old_name to new_name;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------
+| ALTER TABLE - MODIFY Datatype |
+---------------------------------
+// Untuk memodifikasi tipe data, ukuran, atau batasan kolom dalam sebuah table //
+
+- ALTER TABLE table_name
+  MODIFY column_name new_datatype constraint;
+
+Contoh :
+// SQL berikut memodifikasi ukuran kolom "Email" menjadi varchar(100), dan kita juga menambahkan NOT NULL batasan //
+
+- ALTER TABLE Customers
+  MODIFY Email varchar(100) NOT NULL;
+
+# Change Data Type Example
+// Sekarang kita ingin mengubah tipe data kolom bernama "DateOfBirth" di tabel "Persons" //
+
+- ALTER TABLE Persons
+  MODIFY COLUMN DateOfBirth year;
+
+// Perhatikan bahwa kolom "DateOfBirth" sekarang bertipe tahun dan akan memuat tahun dalam format dua atau empat digit //
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------
+| ALTER TABLE - ADD CONSTRAINT |
+--------------------------------
+// Untuk menambahkan batasan pada tabel yang sudah ada //
+
+- ALTER TABLE table_name
+  ADD CONSTRAINT constraint_name constraint_definition;
+
+Contoh :
+// SQL berikut menambahkan batasan bernama "CHK_Age" itu adalah batasan CHECK yang memastikan bahwa kolom "Age" memiliki nilai 18 ke atas //
+
+- ALTER TABLE Members
+  ADD CONSTRAINT CHK_Age CHECK (Age >= 18);
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------
+| ALTER TABLE - Rename table |
+------------------------------
+// Untuk mengganti nama table //
+
+- ALTER TABLE table_name
+  RENAME TO new_table_name;
+
+Contoh :
+// SQL berikut mengubah nama tabel "Customers" menjadi "Clients" //
+
+- ALTER TABLE Customers
+  RENAME TO Clients;

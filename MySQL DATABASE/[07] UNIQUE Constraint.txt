@@ -1,0 +1,52 @@
+[07] UNIQUE Constraint
+// Batasan UNIQUE tersebut memastikan bahwa semua nilai dalam sebuah kolom bersifat unik. Baik Batasan UNIQUE `constraint` maupun PRIMARY KEY `constraints` memberikan jaminan keunikan untuk sebuah kolom atau sekumpulan kolom. Namun, Anda dapat memiliki banyak UNIQUE batasan per tabel, tetapi hanya satu PRIMARY KEY batasan per tabel. //
+
+-------------------------------------
+| UNIQUE Constraint on CREATE TABLE |
+-------------------------------------
+// SQL berikut mendefinisikan UNIQUEbatasan untuk kolom "ID" saat pembuatan tabel "Persons" //
+
+- CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    UNIQUE (ID)
+  );
+
+# Naming a Unique Constraint
+// Untuk memberi nama UNIQUEbatasan, dan untuk mendefinisikan UNIQUEbatasan pada beberapa kolom //
+
+- CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    CONSTRAINT UC_Person UNIQUE (ID,LastName)
+  );
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------------
+| UNIQUE Constraint on ALTER TABLE |
+------------------------------------
+// Untuk membuat UNIQUE batasan pada kolom "ID" ketika tabel sudah dibuat //
+
+- ALTER TABLE Persons
+  ADD UNIQUE (ID);
+
+# Naming a Unique Constraint
+// Untuk memberi nama UNIQUE batasan, dan untuk mendefinisikan UNIQUEb atasan pada beberapa kolom //
+
+- ALTER TABLE Persons
+  ADD CONSTRAINT UC_Person UNIQUE (ID,LastName);
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+----------------------------
+| Drop a UNIQUE Constraint |
+----------------------------
+// Untuk menghapus UNIQUE batasan (constraint) //
+
+- ALTER TABLE Persons
+  DROP INDEX UC_Person;

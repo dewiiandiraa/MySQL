@@ -1,0 +1,48 @@
+[03] CREATE TABLE
+// Pernyataan CREATE TABLE ini digunakan untuk membuat tabel baru dalam basis data //
+
+- CREATE TABLE table_name (
+	   column 1 datatype constraint,
+	   column 2 datatype constraint,
+	   column 3 data type constraint,
+	   . . .
+  );
+
+// Parameter table_name menentukan nama tabel baru //
+// Parameter column1 , column2 , ... menentukan nama-nama kolom di dalam table //
+// Parameter tipe data menentukan tipe data setiap kolom (misalnya varchar, int, date, dll.) //
+// Parameter batasan bersifat opsional, dan menentukan aturan untuk integritas data (misalnya kunci utama, tidak boleh null, dll.) //
+
+CONTOH :
+
+- CREATE TABLE Persons (
+  	   PersonID int PRIMARY KEY,
+  	   LastName varchar(255) NOT NULL,
+  	   FirstName varchar(255),
+  	   Address varchar(255),
+  	   City varchar(255)
+  );
+
+// Contoh Penjelasan:
+PersonID - Kolom ini bertipe integer (int). Ini juga merupakan kolom KUNCI UTAMA , yang secara unik mengidentifikasi setiap baris.
+LastName - Kolom ini adalah string karakter dengan panjang variabel dengan panjang maksimum 255 karakter (varchar(255)). NOT NULL menentukan bahwa kolom ini tidak boleh kosong.
+FirstName, Address, City - Kolom-kolom ini juga merupakan string karakter dengan panjang variabel dengan panjang maksimum 255 karakter (varchar(255)). Kolom-kolom ini secara default mengizinkan nilai NULL. //
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+----------------------------------------
+| Create New Table From Existing Table |
+----------------------------------------
+// Pernyataan CREATE TABLE tersebut juga dapat digunakan untuk membuat tabel baru yang menyalin sebagian/seluruh data dari tabel yang sudah ada. Jika Anda membuat tabel baru dari tabel yang sudah ada, tabel baru tersebut akan diisi dengan nilai-nilai dari tabel yang sudah ada. //
+
+- CREATE TABLE new_table AS
+       SELECT column 1, column 2, ...
+       FROM existing_table
+       WHERE .....;
+
+CONTOH :
+// SQL berikut membuat tabel baru bernama "GermanCustomers" (yang merupakan salinan dari tabel "Customers") //
+
+- CREATE TABLE GermanCustomers AS
+       SELECT * FROM Customers
+       WHERE Country = 'Germany';

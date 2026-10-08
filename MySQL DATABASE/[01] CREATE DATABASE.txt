@@ -1,0 +1,13 @@
+[01] CREATE DATABASE
+// Pernyataan tersebut CREATE DATABASE digunakan untuk membuat basis data SQL baru //
+
+- CREATE DATABASE database_name;
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-----------------
+| SHOW DATABASE |
+-----------------
+// Setelah basis data dibuat, Anda dapat memeriksanya dalam daftar basis data //
+
+- SHOW DATABASE; --> [MENAMPILKAN SELURUH DATABASE]

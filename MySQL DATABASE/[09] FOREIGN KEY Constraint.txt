@@ -1,0 +1,38 @@
+[09] FOREIGN KEY Constraint
+// Batasan tersebut FOREIGN KEYmenetapkan tautan antara dua tabel, dan mencegah tindakan yang akan menghancurkan tautan di antara keduanya. FOREIGN KEY adalah kolom dalam sebuah tabel yang merujuk pada kolom PRIMARY KEY di tabel lain. Tabel yang memiliki kolom kunci asing disebut tabel anak, dan tabel yang memiliki kolom kunci utama disebut tabel yang dirujuk atau tabel induk. Batasan tersebut FOREIGN KEY mencegah data yang tidak valid dimasukkan ke dalam kolom kunci asing (di tabel anak), karena nilai tersebut harus ada di tabel induk. Batasan tersebut FOREIGN KEY juga mencegah Anda menghapus data di tabel induk, jika baris terkait masih ada di tabel anak.  //
+
+-------------------------------
+| FOREIGN KEY on CREATE TABLE |
+-------------------------------
+// SQL berikut membuat FOREIGN KEY batasan pada kolom "PersonID" saat pembuatan tabel "Orders" //
+
+- CREATE TABLE Orders (
+    OrderID int PRIMARY KEY,
+    OrderNumber int NOT NULL,
+    PersonID int,
+    CONSTRAINT fk_Person
+    FOREIGN KEY (PersonID)
+    REFERENCES Persons(PersonID)
+  );
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------
+| FOREIGN KEY on ALTER TABLE |
+------------------------------
+// Untuk membuat FOREIGN KEY batasan pada kolom "PersonID" setelah tabel "Orders" dibuat //
+
+- ALTER TABLE Orders
+  ADD CONSTRAINT fk_Person
+  FOREIGN KEY (PersonID)
+  REFERENCES Persons(PersonID);
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------
+| Drop a FOREIGN KEY Constraint |
+---------------------------------
+// Untuk menghapus FOREIGN KEY batasan (constraint) //
+
+- ALTER TABLE Orders
+  DROP FOREIGN KEY fk_Person;

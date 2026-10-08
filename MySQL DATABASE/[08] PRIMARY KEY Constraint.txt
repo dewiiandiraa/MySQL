@@ -1,0 +1,69 @@
+[08] PRIMARY KEY Constraint
+// Batasan tersebut PRIMARY KEYsecara unik mengidentifikasi setiap catatan dalam tabel basis data. Batasan PRIMARY KEY(constraint) memastikan nilai yang unik, dan tidak dapat berisi nilai NULL (merupakan kombinasi dari batasan UNIQUE dan Batasan NOT NULL). Suatu tabel hanya dapat memiliki SATU PRIMARY KEY batasan. Kunci utama dapat berupa satu kolom tunggal, atau kombinasi beberapa kolom //
+
+// Tip: Kunci utama adalah target untuk batasan FOREIGN KEY di tabel lain (yang memberlakukan integritas referensial antara data di dua tabel) //
+
+-------------------------------
+| PRIMARY KEY on CREATE TABLE |
+-------------------------------
+// SQL berikut membuat sebuah entri PRIMARY KEYpada kolom "ID" saat pembuatan tabel "Persons" //
+
+- CREATE TABLE Persons (
+    ID int PRIMARY KEY,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int
+  );
+
+# PRIMARY KEY on Multiple Columns
+// Untuk mendefinisikan batasan tanpa nama PRIMARY KEY pada beberapa kolom //
+
+- CREATE TABLE Persons (
+    ID int,
+    LastName varchar(255),
+    FirstName varchar(255),
+    Age int,
+    PRIMARY KEY (ID, LastName)
+  );
+
+// Catatan: Pada contoh di atas, PRIMARY KEYnilainya terdiri dari dua kolom (ID + Nama Belakang) //
+
+// Untuk menentukan batasan bernama PRIMARY KEY pada beberapa kolom //
+
+- CREATE TABLE Persons (
+    ID int,
+    LastName varchar(255),
+    FirstName varchar(255),
+    Age int,
+    CONSTRAINT PK_Person PRIMARY KEY (ID, LastName)
+  );
+
+// Catatan: Pada contoh di atas, namanya PRIMARY KEYadalah "PK_Person", dan nilainya terdiri dari dua kolom (ID + LastName). //
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+------------------------------
+| PRIMARY KEY on ALTER TABLE |
+------------------------------
+// Untuk membuat PRIMARY KEYbatasan pada kolom "ID" ketika tabel sudah dibuat //
+
+- ALTER TABLE Persons
+  ADD PRIMARY KEY (ID);
+
+# PRIMARY KEY on Multiple Columns
+// Untuk menentukan PRIMARY KEYbatasan bernama pada beberapa kolom //
+
+- ALTER TABLE Persons
+  ADD CONSTRAINT PK_Person PRIMARY KEY (ID, LastName);
+
+// Catatan: Saat menggunakan fitur ini ALTER TABLEuntuk menambahkan kunci utama, kolom kunci utama harus dideklarasikan dengan NOT NULL saat pembuatan tabel. //
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------------
+| Drop a PRIMARY KEY Constraint |
+---------------------------------
+// Untuk menghapus PRIMARY KEYbatasan (constraint) //
+
+- ALTER TABLE Persons
+  DROP PRIMARY KEY;

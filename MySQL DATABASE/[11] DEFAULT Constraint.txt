@@ -1,0 +1,42 @@
+[11] DEFAULT Constraint
+// Batasan DEFAULT ini digunakan untuk secara otomatis memasukkan nilai default untuk sebuah kolom, jika tidak ada nilai yang ditentukan. Nilai default akan ditambahkan ke semua catatan baru (jika tidak ada nilai lain yang ditentukan). //
+
+--------------------------------------
+| DEFAULT Constraint on CREATE TABLE |
+--------------------------------------
+// SQL berikut menetapkan DEFAULT nilai untuk kolom "Kota" saat pembuatan tabel "Orang" //
+- CREATE TABLE Persons (
+    ID int PRIMARY KEY,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    City varchar(255) DEFAULT 'Sandnes'
+  );
+
+// Batasan tersebut DEFAULT juga dapat digunakan untuk memasukkan nilai sistem, dengan menggunakan fungsi seperti CURRENT_DATE() untuk memasukkan tanggal saat ini //
+
+- CREATE TABLE Orders (
+    ID int PRIMARY KEY,
+    OrderNumber int NOT NULL,
+    OrderDate date DEFAULT CURRENT_DATE()
+  );
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-------------------------------------
+| DEFAULT Constraint on ALTER TABLE |
+-------------------------------------
+// Untuk menetapkan DEFAULT batasan pada kolom "Kota" ketika tabel sudah dibuat //
+
+- ALTER TABLE Persons
+  ALTER City SET DEFAULT 'Sandnes';
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-----------------------------
+| DROP a DEFAULT Constraint |
+-----------------------------
+// Untuk menghapus DEFAULT batasan (constraint) //
+
+- ALTER TABLE Persons
+  ALTER City DROP DEFAULT;

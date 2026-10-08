@@ -1,0 +1,52 @@
+[10] CHECK Constraint
+// Batasan CHECK (constraint) digunakan untuk memastikan bahwa nilai-nilai dalam sebuah kolom memenuhi kondisi tertentu. Batasan tersebut CHECK mengevaluasi data menjadi TRUE atau FALSE. Jika data dievaluasi menjadi TRUE, operasi berhasil. Jika data dievaluasi menjadi FALSE, seluruh operasi INSERT atau UPDATE dibatalkan, dan akan muncul kesalahan. //
+
+------------------------------------
+| CHECK Constraint on CREATE TABLE |
+------------------------------------
+// SQL berikut membuat CHECK batasan pada kolom "Usia" saat pembuatan tabel "Orang". Di sini, CHECK batasan tersebut memastikan bahwa kolom "Usia" harus memiliki nilai 18 tahun atau lebih //
+
+- CREATE TABLE Persons (
+    ID int PRIMARY KEY,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int CHECK (Age >= 18)
+  );
+
+# Naming a CHECK Constraint
+// Untuk memberi nama CHECK batasan, atau untuk mendefinisikan CHECKbatasan pada beberapa kolom //
+
+- CREATE TABLE Persons (
+    ID int PRIMARY KEY,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int,
+    City varchar(255),
+    CONSTRAINT chk_PersonAge CHECK (Age >= 18 AND City = 'Sandnes')
+  );
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+-----------------------------------
+| CHECK Constraint on ALTER TABLE |
+-----------------------------------
+// Untuk membuat CHECK batasan pada kolom "Usia" ketika tabel sudah dibuat //
+
+- ALTER TABLE Persons
+  ADD CHECK (Age >= 18);
+
+# Naming a CHECK Constraint
+// Untuk memberi nama CHECK batasan, dan untuk mendefinisikan CHECK batasan pada beberapa kolom //
+
+- ALTER TABLE Persons
+  ADD CONSTRAINT chk_PersonAge CHECK (Age >= 18 AND City = 'Sandnes');
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------
+| Drop a CHECK Constraint |
+---------------------------
+// Untuk menghapus CHECK batasan (constraint) //
+
+- ALTER TABLE Persons
+  DROP CHECK chk_PersonAge;

@@ -1,0 +1,8 @@
+[02] DROP DATABASE
+// Pernyataan ini DROP DATABASEdigunakan untuk menghapus secara permanen basis data //
+
+- DROP DATABASE database_name;
+
+Contoh :
+
+- DROP DATABASE testDB;

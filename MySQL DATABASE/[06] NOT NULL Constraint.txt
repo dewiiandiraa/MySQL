@@ -1,0 +1,36 @@
+[06] NOT NULL Constraint
+// Batasan tersebut NOT NULL mewajibkan sebuah kolom untuk TIDAK menerima nilai NULL. Ini memastikan bahwa suatu field selalu berisi nilai, yang berarti Anda tidak dapat memasukkan data baru, atau memperbarui data tanpa menambahkan nilai ke field ini. Secara default, sebuah kolom dapat menyimpan nilai NULL. //
+
+----------------------------
+| NOT NULL on CREATE TABLE |
+----------------------------
+// Untuk menentukan NOT NULLbatasan saat membuat tabel, tambahkan NOT NULL setelah tipe data nama kolom //
+// SQL berikut membuat tabel "Persons", dan memastikan bahwa kolom "ID", "LastName", dan "FirstName" tidak dapat menerima nilai NULL //
+
+- CREATE TABLE Persons (
+    ID int NOT NULL,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255) NOT NULL,
+    Age int
+  );
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+---------------------------
+| NOT NULL on ALTER TABLE |
+---------------------------
+// Untuk menentukan NOT NULLbatasan pada tabel yang sudah ada, gunakan ALTER TABLE dan tambahkan NOT NULL setelah tipe data nama kolom //
+// SQL berikut menambahkan NOT NULLbatasan pada kolom "Usia", setelah tabel "Orang" sudah dibuat //
+
+- ALTER TABLE Persons
+  MODIFY Age int NOT NULL;
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--------------------------------
+| Remove a NOT NULL Constraint |
+--------------------------------
+// Untuk menghapus NOT NULLbatasan dari sebuah kolom (agar kolom tersebut dapat menerima nilai NULL lagi) //
+
+- ALTER TABLE Persons
+  MODIFY Age int NULL;
